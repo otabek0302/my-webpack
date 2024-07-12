@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 
-import { LazyAbout } from "./pages/about/About.lazy";
-import { LazyAdmin } from "./pages/admin/Admin.lazy";
+import { LazyAbout } from "@/pages/about/About.lazy";
+import { LazyAdmin } from "@/pages/admin/Admin.lazy";
 
 const router = createBrowserRouter([
   {

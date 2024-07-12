@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = (env) => {
   const isDev = env.mode === "development";
@@ -61,6 +63,12 @@ module.exports = (env) => {
     },
     resolve: {
       extensions: [".js", ".jsx"],
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+        "@components": path.resolve(__dirname, "src/components"),
+        "@services": path.resolve(__dirname, "src/services"),
+        "@utilities": path.resolve(__dirname, "src/utilities"),
+      },
     },
     devtool: isDev ? "inline-source-map" : false,
     devServer: {
@@ -70,10 +78,7 @@ module.exports = (env) => {
       compress: true,
       port: env.port || 3000,
       open: true,
-      
-      // this line analyzer open analyser page for see chunks
-      analyzer: isDev ? false : true,
-      
+
       // this line of code is working for dev mode
       historyApiFallback: true,
     },
